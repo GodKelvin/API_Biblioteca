@@ -2,7 +2,7 @@
 let chai = require("chai");
 let server = require("../config/server");
 let chaiHttp = require("chai-http");
-let Books = require("../models/BooksDAO");
+//let Books = require("../models/BooksDAO");
 
 /*ENCURTANDO OS COMANDOS */
 let expect = chai.expect;
@@ -19,9 +19,9 @@ describe("Books - POST", function(){
 		
 		/* DEFINIIR EXEMPLO A SER ENVIADO PARA A REQUISICAO */
 		let novoLivro = {
-			name_book: "Os Cavaleiros",
+			name_book: "Os Cavaleiraaaaaaaaaaos",
 			author_book: "Kelvin",
-			isbn: "123"
+			isbn: "12sadsassdsas3"
 		};
 		
 		/*FAZENDO A REQUISICAO NO SERVIDOR -> TIPO, ENVIO(se tiver), TERMINA CHECANDO ==> */
