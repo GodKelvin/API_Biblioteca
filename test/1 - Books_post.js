@@ -11,7 +11,15 @@ let expect = chai.expect;
 chai.use(chaiHttp);
 
 describe("Books - POST", function(){
-	
+	it("Apagando os dados de tb_books", function(done){
+		chai.request(server)
+		.delete("/dev/books/delete-all")
+		.end(function(err, res){
+			expect(res).to.have.status(200);
+			expect(res.body).to.have.property("msg");
+			done();
+		});
+	});
 	/* DECLARACAO DE VARIAVEIS */
 	let name, isbn, author;
 	
@@ -19,9 +27,9 @@ describe("Books - POST", function(){
 		
 		/* DEFINIIR EXEMPLO A SER ENVIADO PARA A REQUISICAO */
 		let novoLivro = {
-			name_book: "Os Cavaleiraaaaaaaaaaos",
+			name_book: "Os Cavaleiros",
 			author_book: "Kelvin",
-			isbn: "12sadsassdsas3"
+			isbn: "123"
 		};
 		
 		/*FAZENDO A REQUISICAO NO SERVIDOR -> TIPO, ENVIO(se tiver), TERMINA CHECANDO ==> */
@@ -29,7 +37,8 @@ describe("Books - POST", function(){
 		.post("/v1/books/insertbook")
 		.send(novoLivro)
 		.end(function(err, res){
-				
+			
+			//console.log(res.body);
 			//"A RESPOSTA DEVE TER O STATUS 200"
 			expect(res).to.have.status(200);
 			
@@ -37,10 +46,11 @@ describe("Books - POST", function(){
 			expect(res.body).to.be.a("object");
 			
 			//"DENTRO DO OBJETO DEVE CONTER UMA PROPRIEDADE CHAMADA name_book"
+			expect(res.body).to.have.property("id_book");
 			expect(res.body).to.have.property("name_book");
 			expect(res.body).to.have.property("author_book");
 			expect(res.body).to.have.property("isbn");
-			
+						
 			/*ARMAZENANDO OS VALORES RETORNADOS PARA OS TESTES POSTERIORES*/
 			name = res.body.name;
 			author = res.body.author;
@@ -49,7 +59,6 @@ describe("Books - POST", function(){
 			/* FINALIZA O RESPECTIVO TESTE E ENCERRA */
 			done();
 		});
-		
 		
 	});
 });

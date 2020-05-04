@@ -25,6 +25,7 @@ module.exports.insert_book = function(app, request, response){
 						/*SE O ISBN DO LIVRO NAO TIVER CADASTRADO, INSERE */
 						clientMySql.InsertBook([name_book, author_book, isbn], function(error, result){
 							if(!error){
+								//console.log(result);
 								let res = new Object();
 								res.id_book = result.insertId;
 								res.name_book = name_book;

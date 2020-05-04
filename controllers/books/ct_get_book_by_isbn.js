@@ -11,7 +11,7 @@ module.exports.listBookByIsbn = function(app, request, response){
 			}else{
 				let res = new Object();
 				res.error = error;
-				response.statis(400).json(res);
+				response.status(400).json(res);
 			}
 		});
 		

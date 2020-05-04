@@ -57,10 +57,16 @@ BooksDAO.prototype.ChangeNameBook = function([new_name_book, isbn], callback){
 /* DELETE */
 BooksDAO.prototype.DeleteBookByISBN = function(isbn, callback){
 	this._connection.query("DELETE FROM tb_books \
-							WHERE isbn = ?",
+							WHERE isbn = ?;",
 							isbn, callback);
 }
 
+/* DEV */
+//Deleta todos os livros de `tb_books`
+BooksDAO.prototype.DeleteAllBooks = function(callback){
+	this._connection.query("TRUNCATE TABLE tb_books;", callback);
+	
+}
 
 
 
