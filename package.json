@@ -16,8 +16,5 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2"
   },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0"
-  }
+  "devDependencies": {}
 }
