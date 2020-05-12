@@ -6,7 +6,7 @@ let dbConnection = function(){
 			host: "localhost",
 			user: "lehrbacklocal",
 			password: "clara",
-			database: "biblioteca"
+			database: "lehrbackBiblioteca"
 		});
 		console.log("LehrbackCloud Conectado!");
 	}
