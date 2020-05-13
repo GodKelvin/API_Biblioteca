@@ -4,9 +4,9 @@ let dbConnection = function(){
 	if(!dbConnection.instance){
 		dbConnection.instance = mariadb.createConnection({
 			host: "localhost",
-			user: "lehrbacklocal",
-			password: "clara",
-			database: "lehrbackBiblioteca"
+			user: process.env.user_bd,
+			password: process.env.pass_bd,
+			database: process.env.biblioteca_database_name
 		});
 		console.log("LehrbackCloud Conectado!");
 	}
