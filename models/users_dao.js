@@ -8,3 +8,8 @@ UsersDAO.prototype.InsertUser = function([user_name, user_login, user_password],
 							VALUES (?, ?, ?);",
 							[user_name, user_login, user_password], callback);
 }
+
+/* EXPORTS */
+module.exports = function(){
+	return UsersDAO;
+}
