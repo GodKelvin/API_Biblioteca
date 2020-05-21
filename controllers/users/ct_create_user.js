@@ -28,8 +28,15 @@ module.exports.createUser = function(app, request, response){
 			
 			client_users_dao.InsertUser([user_name, user_login, user_password], function(error, result){
 				if(!error){
-					console.log(connection.end());
-					//console.log(connection.destroy());
+					console.log(client_users_dao)
+					console.log(connection.state);
+					
+					connection.destroy();
+					//client_users_dao.end();
+					
+					console.log(connection.state);
+					console.log(client_users_dao)
+					
 					let res = new Object();
 					res.user_name = user_name;
 					res.user_login = user_login;

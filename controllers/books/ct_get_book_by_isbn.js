@@ -3,7 +3,7 @@ module.exports.listBookByIsbn = function(app, request, response){
 		let isbn = request.params.isbn;
 		
 		let connection = app.config.mysql();
-		let clientMySql = new app.models.BooksDAO(connection);
+		let clientMySql = new app.models.books_dao(connection);
 		
 		clientMySql.GetBookByISBN(isbn, function(error, result){
 			if(!error){

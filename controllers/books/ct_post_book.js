@@ -11,23 +11,24 @@ module.exports.insert_book = function(app, request, response){
 			let isbn = request.body.isbn;
 			
 			let connection = app.config.mysql();
-			let clientMySql = new app.models.BooksDAO(connection);
+			let clientMySql = new app.models.books_dao(connection);
 			
 			/*VERIFICAR SE O LIVRO JA EXISTE (ISBN) */
 			clientMySql.GetBookByISBN(isbn, function(error, result){
 				if(!error){
+					//Se jah existir um livro cadastrado com o ISBN informado
 					if(result.length > 0){
 						let res = new Object();
-						res.msg = "ISBN = "+isbn+" alread exists";
-						res.result = result;
-						response.status(200).json(res);
+						res.error = "ISBN = "+isbn+" alread exists";
+						//res.result = result;
+						response.status(400).json(res);
 					}else{
 						/*SE O ISBN DO LIVRO NAO TIVER CADASTRADO, INSERE */
 						clientMySql.InsertBook([name_book, author_book, isbn], function(error, result){
 							if(!error){
 								//console.log(result);
 								let res = new Object();
-								res.id_book = result.insertId;
+								//res.msg = "";
 								res.name_book = name_book;
 								res.author_book = author_book;
 								res.isbn = isbn;

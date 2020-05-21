@@ -2,7 +2,7 @@ module.exports.listBooksByName = function(app, request, response){
 	try{
 		let name_book = request.params.name_book;
 		let connection = app.config.mysql();
-		let clientMySql = new app.models.BooksDAO(connection);
+		let clientMySql = new app.models.books_dao(connection);
 		
 		clientMySql.GetBooksByName(name_book, function(error, result){
 			if(!error){

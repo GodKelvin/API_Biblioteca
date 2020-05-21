@@ -9,7 +9,7 @@ module.exports.change_name_book = function(app, request, response){
 			let isbn = request.body.isbn;
 			
 			let connection = app.config.mysql();
-			let clientMySql = new app.models.BooksDAO(connection);
+			let clientMySql = new app.models.books_dao(connection);
 			
 			clientMySql.ChangeNameBook([new_name_book, isbn], function(error, result){
 				if(!error){
