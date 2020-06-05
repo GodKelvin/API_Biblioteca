@@ -7,9 +7,20 @@ BooksDAO.prototype.Ruok = function(callback){
 }
 
 /* GETS */
+
+/*
+BooksDAO.prototype.GetBooks = function(callback){
+	this._connection.query("SELECT * FROM tb_books;", function(callback){
+		//this._connection.release();
+		console.log("opa1");
+	});
+}
+*/
+
 BooksDAO.prototype.GetBooks = function(callback){
 	this._connection.query("SELECT * FROM tb_books;", callback);
 }
+
 
 BooksDAO.prototype.GetBookByISBN = function(isbn, callback){
 	this._connection.query("SELECT * FROM tb_books\

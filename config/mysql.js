@@ -8,9 +8,9 @@ let db_config = {
 	password: process.env.pass_bd,
 	database: process.env.biblioteca_database_name
 };
-
 //Criando a piscina de conexões
 let pool = mariadb.createPool(db_config);
+
 
 pool.getConnection(function(error, connection){
 	if(!error){
@@ -22,9 +22,8 @@ pool.getConnection(function(error, connection){
 	return;
 });
 
+
 //Retornando a "pool" de conexoes
-module.exports = function(){
-	return pool;
-}
+module.exports = pool;
 
 
